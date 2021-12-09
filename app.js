@@ -25,3 +25,6 @@ const start = async () => {
 }
 
 start();
+
+
+//*farts on ur app.js* (cause connor wrote it its cringe and gets farted on)
