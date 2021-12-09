@@ -1,4 +1,3 @@
-
 const Product = require('../Models/product')
 
 //should be working if its not try changing some var names around :)
