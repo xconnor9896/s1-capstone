@@ -1,10 +1,13 @@
 # s1-capstone
 
 ## Model
-- ~~productModel (name, image, price)~~
+- productModel (name, image, price)
+- cartModel (name, price, quantity)
 
 ## Controllers
-- ~~productController~~
+- productController
+- fileUploadCon
+- cartController
 
 ## Routes
 - cartRoute

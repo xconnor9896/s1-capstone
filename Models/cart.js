@@ -1,4 +1,4 @@
-const mogoose = require('mongoose')
+const mongoose = require('mongoose')
 
 const Cart = new mongoose.Schema({
     name: {
@@ -9,11 +9,10 @@ const Cart = new mongoose.Schema({
         type: String,
         required: true,
     },
-    image: {
-        type: String,
-        required: [true, `Please add a picture for your product.`]
-    },
-    
+    quantity: {
+        type: Number,
+        default: 0
+    }
 })
 
 module.exports = mongoose.model('Cart', Cart)

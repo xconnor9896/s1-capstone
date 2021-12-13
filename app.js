@@ -15,7 +15,8 @@ app
     // .use(express.static('/'public))
     //methods for the controlers
 
-
+    app.use('/api/v1/products', productRouter)
+    app.use('/api/v1/cart', cartRouter)
 const start = async () => {
     try {
         app.listen(port, console.log(`listening @ port ${port}`));
