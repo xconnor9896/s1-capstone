@@ -6,3 +6,5 @@ const { addItem, removeItem } = require('../Controllers/cartCon')
 router.route('/')
     .post(addItem)
     .delete(removeItem)
+
+module.exports = router

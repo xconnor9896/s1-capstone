@@ -5,3 +5,5 @@ const addItem = async (req, res) => {
 const removeItem = async (req, res) => {
     res.send(`removeItem`)
 }
+
+module.exports = { addItem, removeItem }

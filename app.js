@@ -4,7 +4,11 @@ require('express-async-errors');
 const express = require('express');
 const app = express();
 
+const productRouter = require('./Routes/products');
+const cartRouter = require('./Routes/cart')
 // controller goes here
+
+
 
 // middleware goes here
 
@@ -14,6 +18,9 @@ app
     .use(express.json())
     // .use(express.static('/'public))
     //methods for the controlers
+
+    app.use(express.static('./public'))
+    
 
     app.use('/api/v1/products', productRouter)
     app.use('/api/v1/cart', cartRouter)
