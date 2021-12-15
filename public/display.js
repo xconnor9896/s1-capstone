@@ -11,6 +11,7 @@ async function fetchProducts() {
             return `<article class="product">
             <img src="${each.image}" alt="${each.name}" class"img"/>
             <footer><p>${each.name}</p>
+            <button onclick="">Doesn't Work (ATC)</a>
             <span>${each.price}</span></footer></article>`
         }).join("")
         container.innerHTML = tempProducts;
