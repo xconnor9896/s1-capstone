@@ -6,8 +6,6 @@ const priceInput = document.querySelector('#price');
 const imageInput = document.querySelector('#image');
 const fileForm = document.querySelector('.file-form');
 
-const container = document.querySelector('.products-container');
-
 let imageValue;
 
 fileForm.addEventListener('submit', async (e) => {
@@ -48,21 +46,3 @@ imageInput.addEventListener('change', async (e) => {
   }
 })
 
-async function fetchProducts() {
-  try {
-    const {
-      data: { products }
-    } = await axios.get(url);
-    const tempProducts = products.map(each => {
-      return `<article class="product">
-            <img src="${each.image}" alt="${each.name}" class"img"/>
-            <footer><p>${each.name}</p>
-            <span>${each.price}</span></footer></article>`
-    }).join("")
-    container.innerHTML = tempProducts;
-  } catch (err) {
-
-  }
-}
-
-fetchProducts();
