@@ -6,7 +6,7 @@ const priceInput = document.querySelector('#price');
 const imageInput = document.querySelector('#image');
 const fileForm = document.querySelector('.file-form');
 
-const container = document.querySelector('.container');
+const container = document.querySelector('.products-container');
 
 let imageValue;
 
