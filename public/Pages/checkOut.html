@@ -7,14 +7,20 @@
     <title>Checkout</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../global.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+
 </head>
 <body>
     <section class="section-center content">
 
         <h1>Checkout</h1>
 
+
+
         <form id="payment-form">
-            <p>Your Card Number: 4242 4242 4242 4242</p>
+            <p class="total"></p>
 
             <div id="card-element">
                 <!-- main.js automatically injects html here -->
@@ -35,6 +41,6 @@
 
     </section>
 
-    <script src="script.js"></script>
+    <script src="../payment.js"></script>
 </body>
 </html>
