@@ -6,12 +6,12 @@ const Cart = new mongoose.Schema({
         required: true,
     },
     price: {
-        type: String,
+        type: Number,
         required: true,
     },
     quantity: {
         type: Number,
-        default: 0
+        default: 1
     }
 })
 

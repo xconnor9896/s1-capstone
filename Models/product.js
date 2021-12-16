@@ -7,9 +7,8 @@ const Product = new mongoose.Schema({
         unique: true
     },
     price: {
-        type: String,
+        type: Number,
         required: [true, 'Must enter a price...'],
-        match: [/\$\d+\.\d\d/, 'Enter a valid price.'] //might remove if regex decides it wants to be cringe (very likely)
     },
     image: {
         type: String,

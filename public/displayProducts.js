@@ -3,7 +3,7 @@ const url = '/api/v1/products'
 const container = document.querySelector('.products-container');
 
 const addToCart = (id) => {
-    const added = axios.post('api/v1/cart', {_id: id})
+    const added = axios.post('/api/v1/cart', {_id: id})
 }
 
 async function fetchProducts() {
