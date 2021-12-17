@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const { addItem, removeItem, getItems } = require('../Controllers/cartCon')
+const { addItem, updateItem, getItems } = require('../Controllers/cartCon')
 
 router.route('/')
     .get(getItems)
     .post(addItem)
-    .delete(removeItem)
+    .put(updateItem)
 
 module.exports = router

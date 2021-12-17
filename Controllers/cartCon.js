@@ -17,11 +17,21 @@ const addItem = async (req, res) => {
     res.status(200).json({ addedItem })
 }
 
-const removeItem = async (req, res) => {
-    const item = await Cart.findById(req.body) 
-    const { _id } = item 
-    const cart = await Cart.findByIdAndDelete(_id)
-    res.status(200).json({ cart })
+const updateItem = async (req, res) => {
+    const {id, dir, quant} = req.body
+    let updated;
+    if(dir === 'plus'){
+        updated = await Cart.findByIdAndUpdate(id, {quantity: Number(quant) + 1}) 
+
+    }else{
+        if(quant == 1){
+            updated = await Cart.findByIdAndDelete(id)
+        }
+        else{
+            updated = await Cart.findByIdAndUpdate(id, {quantity: quant - 1}) 
+        }
+    }
+    res.status(200).json( updated )
 }
 
-module.exports = { addItem, removeItem, getItems }
+module.exports = { addItem, updateItem, getItems }
