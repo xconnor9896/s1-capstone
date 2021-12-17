@@ -1,10 +1,21 @@
 const purchase = [
-    
+    {
+        id: '1',
+        name: 'test item',
+        price: 999
+    },
+    {
+        id: '2',
+        name: 'test item 2',
+        price: 1000
+    }
 ]
 
-// ^^^^ THIS IS SUPPOSED TO BE THE CARD ELEMENT
+const total_amount = 1999;
+const shipping_fee = 999;
 
-require('dotenv').config();
+// ^^^^ THIS IS SUPPOSED TO BE THE CART'S CONTENTS
+
 
 var stripe = Stripe(
     'pk_test_51K49zxCv8WMtKDPm92T3EISbb3TNG9Tgh3F7HN9KTvMclAee4H2c8iYYD2eDtrwOJObSziMIlKEFu4UjQbWherd200YOvqABFc'
@@ -44,9 +55,9 @@ fetch('/stripe', {
             }
         }
 
-        var card = elements.create("card", {style: style});
+        var card = elements.create("card", { style: style });
         card.mount('#card-element');
-        card.on("change", function(event) {
+        card.on("change", function (event) {
             document.querySelector('button').disabled = event.empty;
             document.querySelector('#card-error').textContent = event.error ? event.error.message : ""
         })
@@ -58,47 +69,47 @@ fetch('/stripe', {
         })
     })
 
-    // call stripe.confirmCardPayment
-    // if card requires authentication stripe shows popup modal to
-    // prompt user to enter auth info w/o leaving checkout
+// call stripe.confirmCardPayment
+// if card requires authentication stripe shows popup modal to
+// prompt user to enter auth info w/o leaving checkout
 
-    const payWithCard = function (stripe, card, clientSecret) {
-        loading(true);
-        stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: card
-            }
-        })
+const payWithCard = function (stripe, card, clientSecret) {
+    loading(true);
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card
+        }
+    })
         .then(function (result) {
-            if(result.error) {
-                showError(result.error.message) 
+            if (result.error) {
+                showError(result.error.message)
             } else {
                 orderComplete(result.paymentIntent.id)
             }
         })
-    }
+}
 
-    const orderComplete = function (paymentIntentId) {
-        loading(false);
-        document
-            .querySelector('.result-message a')
-            .setAttribute('href', 
+const orderComplete = function (paymentIntentId) {
+    loading(false);
+    document
+        .querySelector('.result-message a')
+        .setAttribute('href',
             "https://dashboard.stripe.com/dashboard" + paymentIntentId);
-        document.querySelector('.result-message').classList.remove('hidden');
-        document.querySelector('button').disabled = true;
-    }
+    document.querySelector('.result-message').classList.remove('hidden');
+    document.querySelector('button').disabled = true;
+}
 
-    const showError = function (errorMsgText) {
-        loading(false);
-        const errorMessage = document.querySelector('#card-error');
-        errorMessage.textContent = errorMsgText;
-        setTimeout(() => {
-            errorMessage.textContent = ''
-        }, 4000)
-    }
+const showError = function (errorMsgText) {
+    loading(false);
+    const errorMessage = document.querySelector('#card-error');
+    errorMessage.textContent = errorMsgText;
+    setTimeout(() => {
+        errorMessage.textContent = ''
+    }, 4000)
+}
 
 const loading = function (isLoading) {
-    if(isLoading) {
+    if (isLoading) {
         document.querySelector('button').disabled = true;
         document.querySelector('#spinner').classList.remove('hidden');
         document.querySelector('#button-text').classList.add('hidden');

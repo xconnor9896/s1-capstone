@@ -10,7 +10,8 @@ const fileUpload = require('express-fileupload');
 const cloudinary = require('cloudinary').v2;
 
 const productRouter = require('./Routes/products');
-const cartRouter = require('./Routes/cart')
+const cartRouter = require('./Routes/cart');
+const paymentCon = require('./Controllers/paymentCon');
 // controller goes here
 
 cloudinary.config({
@@ -27,7 +28,7 @@ app
     .use(express.json())
     .use(express.static('./public'))
     .use(fileUpload({useTempFiles: true}))
-
+    .post('/stripe', paymentCon)
     .use('/api/v1/products', productRouter)
     .use('/api/v1/cart', cartRouter)
 const start = async () => {
