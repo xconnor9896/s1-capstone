@@ -92,7 +92,7 @@ const payWithCard = function (stripe, card, clientSecret) {
 const orderComplete = function (paymentIntentId) {
     loading(false);
     document
-        .querySelector('.result-message a')
+        .querySelector('.result-message')
         .setAttribute('href',
             "https://dashboard.stripe.com/dashboard" + paymentIntentId);
     document.querySelector('.result-message').classList.remove('hidden');
